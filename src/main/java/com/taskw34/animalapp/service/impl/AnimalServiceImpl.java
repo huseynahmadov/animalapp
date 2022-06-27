@@ -31,5 +31,10 @@ public class AnimalServiceImpl implements AnimalService {
         animalRepository.deleteById(id);
     }
 
+    @Override
+    public Animal findAnimalById(Long id) {
+        return null;
+    }
+
 
 }
