@@ -4,10 +4,7 @@ import com.taskw34.animalapp.entity.Animal;
 import com.taskw34.animalapp.service.AnimalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -37,7 +34,20 @@ public class AnimalController {
     @PostMapping("/animals/new")
     public String createAnimal(@ModelAttribute Animal animal) {
         animalService.createAnimal(animal);
-        return "redirect:/animals";
+        return "redirect:/pages/animals";
+    }
+
+    @PostMapping("/animals/delete/{id}")
+    public String deleteAnimal(@PathVariable Long id) {
+        animalService.deleteAnimal(id);
+        return "redirect:/pages/animals";
+    }
+
+    @PutMapping("/animals/edit/{id}")
+    public String editAnimal(@PathVariable Long id) {
+        Animal animal = animalService.findAnimalById(id);
+
+        return "edit";
     }
 
 }

@@ -26,5 +26,10 @@ public class AnimalServiceImpl implements AnimalService {
          animalRepository.save(animal);
     }
 
+    @Override
+    public void deleteAnimal(Long id) {
+        animalRepository.deleteById(id);
+    }
+
 
 }

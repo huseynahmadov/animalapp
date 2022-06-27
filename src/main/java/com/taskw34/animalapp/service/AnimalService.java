@@ -12,4 +12,8 @@ public interface AnimalService {
     List<Animal> getAllAnimals();
 
     void createAnimal(Animal animal);
+
+    void deleteAnimal(Long id);
+
+    Animal findAnimalById(Long id);
 }

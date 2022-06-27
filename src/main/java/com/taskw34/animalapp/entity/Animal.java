@@ -19,7 +19,7 @@ public class Animal {
 
     String type;
     String name;
-    Integer age;
+    String age;
     String sex;
 
 
