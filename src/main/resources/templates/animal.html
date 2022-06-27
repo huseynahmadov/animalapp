@@ -25,16 +25,16 @@
       </thead>
       <tbody>
       <tr th:each="animal : ${listAnimals}">
+
           <th scope="row">1</th>
           <td th:text="${animal.name}"></td>
           <td th:text="${animal.type}"></td>
           <td th:text="${animal.age}"></td>
-          <td th:text="${animal.}"></td>
-<!--          <td th:text="${owner.name}"></td>-->
-<!--          <td th:text="${owner.surname}"></td>-->
-<!--          <td th:text="${owner.phoneNumber}"></td>-->
-<!--          <td th:text="${owner.email}"></td>-->
-<!--          <td></td>-->
+          <td th:text="${animal.sex}"></td>
+          <td th:text="${animal.owner.name}"></td>
+          <td th:text="${animal.owner.surname}"></td>
+          <td th:text="${animal.owner.phoneNumber}"></td>
+          <td th:text="${animal.owner.email}"></td>
       </tr>
 
       </tbody>
