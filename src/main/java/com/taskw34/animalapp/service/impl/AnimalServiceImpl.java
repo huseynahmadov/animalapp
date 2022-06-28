@@ -1,6 +1,7 @@
 package com.taskw34.animalapp.service.impl;
 
 import com.taskw34.animalapp.entity.Animal;
+import com.taskw34.animalapp.entity.Owner;
 import com.taskw34.animalapp.repository.AnimalRepository;
 import com.taskw34.animalapp.service.AnimalService;
 import org.springframework.stereotype.Service;
@@ -33,7 +34,21 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Animal findAnimalById(Long id) {
-        return null;
+        return animalRepository.findById(id).orElseThrow(() -> new RuntimeException("Error!"));
+    }
+
+    @Override
+    public void editAnimal(Long id, Animal animal) {
+       Animal foundedAnimal = animalRepository.findById(id)
+               .orElseThrow(() -> new RuntimeException("Animal not found !"));
+
+       foundedAnimal.setName(animal.getName());
+       foundedAnimal.setAge(animal.getAge());
+       foundedAnimal.setType(animal.getType());
+       foundedAnimal.setDescription(animal.getDescription());
+       foundedAnimal.setSex(animal.getSex());
+
+       animalRepository.save(foundedAnimal);
     }
 
 

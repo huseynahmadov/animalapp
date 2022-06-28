@@ -43,11 +43,19 @@ public class AnimalController {
         return "redirect:/pages/animals";
     }
 
-    @PutMapping("/animals/edit/{id}")
-    public String editAnimal(@PathVariable Long id) {
-        Animal animal = animalService.findAnimalById(id);
-
+    @GetMapping("/animals/edit/{id}")
+    public String editAnimal(@PathVariable Long id, Model model) {
+        Animal currentAnimal = animalService.findAnimalById(id);
+        model.addAttribute("current", currentAnimal);
         return "edit";
+    }
+
+
+    @PostMapping("/animals/edit/{id}")
+    public String editAnimal(@PathVariable Long id, @ModelAttribute Animal animal) {
+        animalService.editAnimal(id, animal);
+
+        return "redirect:/pages/animals";
     }
 
 }
